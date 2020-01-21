@@ -1,3 +1,4 @@
+import './ProjectsList.scss';
 import React, { Component } from 'react';
 import ProjectThumbnail from './ProjectThumbnail';
 
@@ -11,14 +12,24 @@ class ProjectsList extends Component {
 
   renderContent() {
     if (this.props.projects) {
-      return <ProjectThumbnail projects={this.props.projects} />;
+      return (
+        <ul>
+          {this.props.projects.data.items.map(project => (
+            <li key={project.sys.id}>
+              <ProjectThumbnail
+                projects={this.props.projects}
+                project={project}
+              />
+            </li>
+          ))}
+        </ul>
+      );
     }
-
     return <div>Loading</div>;
   }
 
   render() {
-    return <div>{this.renderContent()}</div>;
+    return <section className="projects-list">{this.renderContent()}</section>;
   }
 }
 
