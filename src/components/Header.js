@@ -1,6 +1,10 @@
 import './Header.scss';
 import React from 'react';
-
+/**
+ * Header Component
+ * @Header
+ * @returns {JSX.Element} - Returns a JSX template of the Header component
+ */
 const Header = () => {
   return (
     <header>
@@ -12,5 +16,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
