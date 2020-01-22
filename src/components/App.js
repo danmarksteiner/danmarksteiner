@@ -27,6 +27,8 @@ class App extends Component {
     );
   }
   render() {
+    const projects = this.state.projects;
+    const featuredSkills = this.state.featuredSkills;
     return (
       <div className="App">
         <main className="App__main">
@@ -35,11 +37,11 @@ class App extends Component {
             <Switch>
               <Route
                 path="/projects"
-                component={() => <Project projects={this.state.projects} />}
+                component={() => <Project projects={projects} />}
               />
               <Route exact path="/">
-                <ProjectsList projects={this.state.projects} />
-                <FeaturedSkills featuredSkills={this.state.featuredSkills} />
+                <ProjectsList projects={projects} />
+                <FeaturedSkills featuredSkills={featuredSkills} />
               </Route>
               />
             </Switch>
@@ -49,5 +51,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
