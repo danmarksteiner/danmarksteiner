@@ -16,6 +16,12 @@ const ProjectThumbnail = ({ projects, project }) => {
         imageArray={projects.data.includes}
         imageId={project.fields.thumbnailImage.sys.id}
       />
+      <div className="projects-list-overlay">
+        <div>
+          <h4>{project.fields.projectName}</h4>
+          <span>{project.fields.thumbnailDescription}</span>
+        </div>
+      </div>
     </Link>
   );
 };

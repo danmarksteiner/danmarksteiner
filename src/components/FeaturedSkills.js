@@ -20,6 +20,7 @@ const FeaturedSkills = ({ featuredSkills }) => {
                 imageArray={featuredSkills.data.includes}
                 imageId={featuredSkill.fields.skillIcon.sys.id}
               />
+              <span>{featuredSkill.fields.skillName}</span>
             </li>
           ))}
         </ul>

@@ -1,0 +1,34 @@
+.project-page {
+  .spotlight {
+    position: relative;
+    .spotlight-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .spotlight-text {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      h1,
+      h2,
+      h3 {
+        color: #fff;
+      }
+      h2 {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  article {
+    margin: auto;
+    padding: 60px 0;
+    max-width: 900px;
+  }
+  iframe {
+    border: none;
+  }
+}

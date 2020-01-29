@@ -1,3 +1,4 @@
+import './SingleImageAsset.scss';
 import React from 'react';
 /**
  * Filters out a single image from the ID supplied in Contenfuls reference ID's and returns and image tag

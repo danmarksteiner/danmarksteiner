@@ -1,3 +1,4 @@
+import './App.scss';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ import Header from './Header';
 import Project from './Project';
 import ProjectsList from './ProjectsList';
 import FeaturedSkills from './FeaturedSkills';
+import ContactForm from './ContactForm';
 
 class App extends Component {
   /**
@@ -33,7 +35,9 @@ class App extends Component {
       <div className="App">
         <main className="App__main">
           <Router>
-            <Header />
+            <Route exact path="/">
+              <Header />
+            </Route>
             <Switch>
               <Route
                 path="/projects"
@@ -46,6 +50,10 @@ class App extends Component {
               />
             </Switch>
           </Router>
+          <ContactForm />
+          <div className="contact-me">
+            <button>Contact</button>
+          </div>
         </main>
       </div>
     );
