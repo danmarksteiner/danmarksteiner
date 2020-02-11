@@ -26,6 +26,10 @@
   article {
     margin: auto;
     padding: 60px 0;
-    max-width: 900px;
+    max-width: 970px;
+    img,
+    video {
+      margin: 40px 0;
+    }
   }
 }
