@@ -1,0 +1,39 @@
+iframe {
+  border: none;
+}
+.project-page-banners {
+  margin: auto;
+  padding: 0px 0 60px;
+  max-width: 970px;
+  display: grid;
+  grid-template-areas:
+    'a a a'
+    'b c d'
+    'e e e';
+  align-content: space-between;
+  row-gap: 20px;
+}
+.project-banner-leaderboard {
+  grid-area: a;
+  border: 1px solid black;
+  justify-self: center;
+}
+.project-banner-dmpu {
+  grid-area: b;
+  border: 1px solid black;
+}
+.project-banner-skyscraper {
+  grid-area: c;
+  border: 1px solid black;
+  justify-self: center;
+}
+.project-banner-mpu {
+  grid-area: d;
+  border: 1px solid black;
+  align-self: center;
+  justify-self: right;
+}
+.project-banner-billboard {
+  grid-area: e;
+  border: 1px solid black;
+}

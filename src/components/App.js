@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { getContent } from '../api/getContent';
 
+import ScrollToTop from './ScrollToTop';
 import Header from './Header';
 import Project from './Project';
 import ProjectsList from './ProjectsList';
@@ -35,6 +36,7 @@ class App extends Component {
       <div className="App">
         <main className="App__main">
           <Router>
+            <ScrollToTop />
             <Route exact path="/">
               <Header />
             </Route>
