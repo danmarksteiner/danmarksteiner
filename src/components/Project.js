@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import RichTextRenderer from './RichTextRenderer';
 import ProjectBanners from './ProjectBanners';
 import SingleImageAsset from './SingleImageAsset';
+import ProjectClient from './ProjectClient';
 
 /**
  * Returns a JSX template layout with the selected project taken from the canonical URL navigated to.
@@ -21,6 +22,7 @@ const Project = ({ projects, location }) => {
       currentProject => currentProject.fields.canonicalUrl === currentProjectUrl
     );
     const matchedProject = matchedProjectItems[0];
+    const matchedClient = matchedProject.fields.client.sys.id;
     const richTextDocument = matchedProject.fields.projectDescription;
     return (
       <main className="project-page">
@@ -33,6 +35,10 @@ const Project = ({ projects, location }) => {
           <div className="spotlight-text">
             <h1>{matchedProject.fields.projectName}</h1>
             <h2>Agency - {matchedProject.fields.agency}</h2>
+            <ProjectClient
+              clientArray={projects.data.includes}
+              clientId={matchedClient}
+            />
             <h3>Roles - {matchedProject.fields.roles}</h3>
           </div>
         </div>

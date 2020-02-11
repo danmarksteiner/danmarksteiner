@@ -12,6 +12,14 @@ const SingleImageAsset = ({ imageArray, imageId }) => {
   const matchedImage = imageArray.Asset.filter(
     currentImage => currentImage.sys.id === imageId
   );
+  if (matchedImage[0].fields.file.contentType === 'video/mp4') {
+    return (
+      <video width="980" height="551.25" controls>
+        <source src={matchedImage[0].fields.file.url} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
   return (
     <img
       src={matchedImage[0].fields.file.url}

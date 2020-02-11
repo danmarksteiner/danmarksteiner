@@ -4,6 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import SingleImageAsset from './SingleImageAsset';
 
 const RichTextRenderer = ({ projects, richTextDocument }) => {
+  console.log(richTextDocument);
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
