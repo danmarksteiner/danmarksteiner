@@ -1,8 +1,8 @@
 import './Project.scss';
 import React from 'react';
 import { withRouter } from 'react-router';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-// import Iframe from 'react-iframe';
+import RichTextRenderer from './RichTextRenderer';
+import ProjectBanners from './ProjectBanners';
 import SingleImageAsset from './SingleImageAsset';
 
 /**
@@ -17,39 +17,32 @@ const Project = ({ projects, location }) => {
     const currentProjectUrl = location.pathname.substring(
       location.pathname.lastIndexOf('/') + 1
     );
-    const matchedProject = projects.data.items.filter(
+    const matchedProjectItems = projects.data.items.filter(
       currentProject => currentProject.fields.canonicalUrl === currentProjectUrl
     );
-    const matchedProjectDescription = documentToHtmlString(
-      matchedProject[0].fields.projectDescription
-    );
-
+    const matchedProject = matchedProjectItems[0];
+    const richTextDocument = matchedProject.fields.projectDescription;
     return (
       <main className="project-page">
         <div className="spotlight">
           <SingleImageAsset
             imageArray={projects.data.includes}
-            imageId={matchedProject[0].fields.projectMainImage.sys.id}
+            imageId={matchedProject.fields.projectMainImage.sys.id}
           />
           <div className="spotlight-overlay"></div>
           <div className="spotlight-text">
-            <h1>{matchedProject[0].fields.projectName}</h1>
-            <h2>Agency - {matchedProject[0].fields.agency}</h2>
-            <h3>Roles - {matchedProject[0].fields.roles}</h3>
+            <h1>{matchedProject.fields.projectName}</h1>
+            <h2>Agency - {matchedProject.fields.agency}</h2>
+            <h3>Roles - {matchedProject.fields.roles}</h3>
           </div>
         </div>
-        <article
-          dangerouslySetInnerHTML={{ __html: matchedProjectDescription }}
-        ></article>
-        {/* <Iframe
-          url="http://localhost:3000/banners/300x250/index.html"
-          width="300px"
-          height="250px"
-          id="myId"
-          className="myClassname"
-          display="initial"
-          position="relative"
-        /> */}
+        <RichTextRenderer
+          projects={projects}
+          richTextDocument={richTextDocument}
+        />
+        {matchedProject.fields.addBanners === true && (
+          <ProjectBanners matchedProject={matchedProject} />
+        )}
       </main>
     );
   } else {
