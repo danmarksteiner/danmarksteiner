@@ -1,12 +1,18 @@
 .featured-skills {
   max-width: 900px;
   margin: auto;
-  padding: 60px 0;
+  padding: 30px 0;
   text-align: left;
+  @media (min-width: 576px) {
+    padding: 60px 0;
+  }
   h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 0 0 40px;
     text-align: center;
+    @media (min-width: 576px) {
+      font-size: 3rem;
+    }
   }
   p {
     margin: 40px 0;
@@ -16,14 +22,14 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     @media all and (min-width: 768px) {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
       grid-column-gap: 10px;
       grid-row-gap: 10px;
     }

@@ -25,7 +25,6 @@ class ContactForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
     axios({
       method: 'POST',
       url: 'http://localhost:3000/send',
@@ -46,7 +45,7 @@ class ContactForm extends Component {
   render() {
     return (
       <section className="contact-form">
-        <div className="container">
+        <div className="contact-container">
           <h2>Contact</h2>
           <p>For work enquries please complete the form below.</p>
           <form
@@ -99,7 +98,7 @@ class ContactForm extends Component {
           </form>
         </div>
         <div className="contact-footer">
-          <span>&copy; DanMarksteiner {this.currentYear}</span>
+          {/* <span>&copy; DanMarksteiner {this.currentYear}</span> */}
         </div>
       </section>
     );

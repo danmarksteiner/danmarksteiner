@@ -1,10 +1,10 @@
 import './Project.scss';
 import React from 'react';
 import { withRouter } from 'react-router';
+import ProjectSpotlight from './ProjectSpotlight';
 import RichTextRenderer from './RichTextRenderer';
 import ProjectBanners from './ProjectBanners';
-import SingleImageAsset from './SingleImageAsset';
-import ProjectClient from './ProjectClient';
+import ProjectCarousel from './ProjectCarousel';
 
 /**
  * Returns a JSX template layout with the selected project taken from the canonical URL navigated to.
@@ -22,33 +22,34 @@ const Project = ({ projects, location }) => {
       currentProject => currentProject.fields.canonicalUrl === currentProjectUrl
     );
     const matchedProject = matchedProjectItems[0];
-    const matchedClient = matchedProject.fields.client.sys.id;
     const richTextDocument = matchedProject.fields.projectDescription;
+    const richTextDocumentFooter = matchedProject.fields.footerText;
+
     return (
       <main className="project-page">
-        <div className="spotlight">
-          <SingleImageAsset
-            imageArray={projects.data.includes}
-            imageId={matchedProject.fields.projectMainImage.sys.id}
-          />
-          <div className="spotlight-overlay"></div>
-          <div className="spotlight-text">
-            <h1>{matchedProject.fields.projectName}</h1>
-            <h2>Agency - {matchedProject.fields.agency}</h2>
-            <ProjectClient
-              clientArray={projects.data.includes}
-              clientId={matchedClient}
-            />
-            <h3>Roles - {matchedProject.fields.roles}</h3>
-          </div>
-        </div>
+        <ProjectSpotlight
+          projects={projects}
+          matchedProject={matchedProject}
+          clientArray={projects.data.includes}
+        />
+
         <RichTextRenderer
           projects={projects}
           richTextDocument={richTextDocument}
         />
         {matchedProject.fields.addBanners === true && (
-          <ProjectBanners matchedProject={matchedProject} />
+          <ProjectBanners matchedProject={matchedProject} projects={projects} />
         )}
+        {matchedProject.fields.showProjectBodyImages === true && (
+          <ProjectCarousel
+            projectImages={matchedProject.fields.projectBodyImages}
+            imageArray={projects.data.includes}
+          />
+        )}
+        <RichTextRenderer
+          projects={projects}
+          richTextDocument={richTextDocumentFooter}
+        />
       </main>
     );
   } else {
