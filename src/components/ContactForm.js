@@ -13,7 +13,8 @@ class ContactForm extends Component {
     this.state = {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      messageSent: false
     };
   }
 
@@ -23,7 +24,11 @@ class ContactForm extends Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state })
     })
-      // .then(() => alert('Success!'))
+      .then(
+        this.setState({ messageSent: true }),
+        this.resetForm(),
+        this.messageSuccess()
+      )
       .catch(error => alert(error));
 
     e.preventDefault();
@@ -44,6 +49,70 @@ class ContactForm extends Component {
   resetForm() {
     this.setState({ name: '', email: '', message: '' });
   }
+  messageSuccess = () => {
+    if (this.state.messageSent === true) {
+      return (
+        <div>
+          <p>
+            Thank you for getting in contact. I will be in touch as soon as
+            possible.
+          </p>
+        </div>
+      );
+    }
+    return (
+      <form
+        id="contact-form"
+        method="POST"
+        name="contact"
+        onSubmit={this.handleSubmit}
+      >
+        <input type="hidden" name="contact" value="the-name-of-the-html-form" />
+        <div className="form-group">
+          <div className="field-wrap">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              className="form-control"
+              value={this.state.name}
+              onChange={this.onNameChange.bind(this)}
+              required
+            />
+          </div>
+          <div className="field-wrap">
+            <label htmlFor="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              className="form-control"
+              aria-describedby="emailHelp"
+              value={this.state.email}
+              onChange={this.onEmailChange.bind(this)}
+              required
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="field-wrap">
+            <label htmlFor="message">Message</label>
+            <textarea
+              className="form-control"
+              rows="5"
+              value={this.state.message}
+              onChange={this.onMessageChange.bind(this)}
+            />
+          </div>
+        </div>
+        <div className="form-group"></div>
+        <div className="form-group form-group-submit">
+          <div className="field-wrap">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    );
+  };
 
   render() {
     return (
@@ -51,60 +120,7 @@ class ContactForm extends Component {
         <div className="contact-container">
           <h2>Contact</h2>
           <p>For work enquries please complete the form below.</p>
-          <form
-            id="contact-form"
-            method="POST"
-            name="contact"
-            onSubmit={this.handleSubmit}
-          >
-            <input
-              type="hidden"
-              name="contact"
-              value="the-name-of-the-html-form"
-            />
-            <div className="form-group">
-              <div className="field-wrap">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={this.state.name}
-                  onChange={this.onNameChange.bind(this)}
-                  required
-                />
-              </div>
-              <div className="field-wrap">
-                <label htmlFor="exampleInputEmail1">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  aria-describedby="emailHelp"
-                  value={this.state.email}
-                  onChange={this.onEmailChange.bind(this)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="field-wrap">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  className="form-control"
-                  rows="5"
-                  value={this.state.message}
-                  onChange={this.onMessageChange.bind(this)}
-                />
-              </div>
-            </div>
-            <div className="form-group"></div>
-            <div className="form-group form-group-submit">
-              <div className="field-wrap">
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
+          {this.messageSuccess()}
         </div>
         <div className="contact-footer">
           {/* <span>&copy; DanMarksteiner {this.currentYear}</span> */}
