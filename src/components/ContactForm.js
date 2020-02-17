@@ -40,7 +40,7 @@ class ContactForm extends Component {
             id="contact-form"
             method="POST"
             name="contact"
-            onSubmit={this.handleSubmit()}
+            onSubmit={this.handleSubmit.bind(this)}
           >
             <input
               type="hidden"
