@@ -20,7 +20,7 @@ const ProjectBanners = ({ matchedProject, projects }) => {
       <div className="project-page-banners">
         {matchedProject.fields.bannerDmpu === true && (
           <Iframe
-            url={`http://localhost:3000/banners/${canonicalUrl}/300x600/index.html`}
+            url={`https://danmarksteiner.com/banners/${canonicalUrl}/300x600/index.html`}
             width="300px"
             height="600px"
             className="project-banner-dmpu"
@@ -31,7 +31,7 @@ const ProjectBanners = ({ matchedProject, projects }) => {
         )}
         {matchedProject.fields.bannerMpu === true && (
           <Iframe
-            url={`http://localhost:3000/banners/${canonicalUrl}/300x250/index.html`}
+            url={`https://danmarksteiner.com/banners/${canonicalUrl}/300x250/index.html`}
             width="300px"
             height="250px"
             className="project-banner-mpu"
@@ -42,7 +42,7 @@ const ProjectBanners = ({ matchedProject, projects }) => {
         )}
         {matchedProject.fields.bannerSkyscraper === true && (
           <Iframe
-            url={`http://localhost:3000/banners/${canonicalUrl}/160x600/index.html`}
+            url={`https://danmarksteiner.com/banners/${canonicalUrl}/160x600/index.html`}
             width="160px"
             height="600px"
             className="project-banner-skyscraper"
@@ -53,7 +53,7 @@ const ProjectBanners = ({ matchedProject, projects }) => {
         )}
         {matchedProject.fields.bannerLeaderboard === true && (
           <Iframe
-            url={`http://localhost:3000/banners/${canonicalUrl}/728x90/index.html`}
+            url={`https://danmarksteiner.com/banners/${canonicalUrl}/728x90/index.html`}
             width="728px"
             height="90px"
             className="project-banner-leaderboard"
@@ -64,7 +64,7 @@ const ProjectBanners = ({ matchedProject, projects }) => {
         )}
         {matchedProject.fields.bannerBillboard === true && (
           <Iframe
-            url={`http://localhost:3000/banners/${canonicalUrl}/970x250/index.html`}
+            url={`https://danmarksteiner.com/banners/${canonicalUrl}/970x250/index.html`}
             width="970px"
             height="250px"
             className="project-banner-billboard"
