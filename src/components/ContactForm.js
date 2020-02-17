@@ -23,21 +23,21 @@ class ContactForm extends Component {
   onMessageChange(event) {
     this.setState({ message: event.target.value });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    axios({
-      method: 'POST',
-      url: 'http://localhost:3000/send',
-      data: this.state
-    }).then(response => {
-      if (response.data.status === 'success') {
-        alert('Message Sent.');
-        this.resetForm();
-      } else if (response.data.status === 'fail') {
-        alert('Message failed to send.');
-      }
-    });
-  }
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   axios({
+  //     method: 'POST',
+  //     url: 'http://localhost:3000/send',
+  //     data: this.state
+  //   }).then(response => {
+  //     if (response.data.status === 'success') {
+  //       alert('Message Sent.');
+  //       this.resetForm();
+  //     } else if (response.data.status === 'fail') {
+  //       alert('Message failed to send.');
+  //     }
+  //   });
+  // }
   resetForm() {
     this.setState({ name: '', email: '', message: '' });
   }
@@ -48,11 +48,7 @@ class ContactForm extends Component {
         <div className="contact-container">
           <h2>Contact</h2>
           <p>For work enquries please complete the form below.</p>
-          <form
-            id="contact-form"
-            onSubmit={this.handleSubmit.bind(this)}
-            method="POST"
-          >
+          <form id="contact-form" netlify method="POST">
             <div className="form-group">
               <div className="field-wrap">
                 <label htmlFor="name">Name</label>
