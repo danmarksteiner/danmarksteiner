@@ -48,7 +48,12 @@ class ContactForm extends Component {
         <div className="contact-container">
           <h2>Contact</h2>
           <p>For work enquries please complete the form below.</p>
-          <form id="contact-form" netlify method="POST">
+          <form id="contact-form" method="POST" name="contact">
+            <input
+              type="hidden"
+              name="contact"
+              value="the-name-of-the-html-form"
+            />
             <div className="form-group">
               <div className="field-wrap">
                 <label htmlFor="name">Name</label>
