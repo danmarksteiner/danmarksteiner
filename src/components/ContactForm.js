@@ -1,6 +1,11 @@
 import './ContactForm.scss';
 import React, { Component } from 'react';
-import axios from 'axios';
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
 
 class ContactForm extends Component {
   constructor(props) {
@@ -11,6 +16,19 @@ class ContactForm extends Component {
       message: ''
     };
   }
+
+  handleSubmit = e => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...this.state })
+    })
+      // .then(() => alert('Success!'))
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  };
+
   currentYear = new Date().getFullYear();
   onNameChange(event) {
     this.setState({ name: event.target.value });
@@ -22,9 +40,6 @@ class ContactForm extends Component {
 
   onMessageChange(event) {
     this.setState({ message: event.target.value });
-  }
-  handleSubmit(event) {
-    event.preventDefault();
   }
   resetForm() {
     this.setState({ name: '', email: '', message: '' });
@@ -40,7 +55,7 @@ class ContactForm extends Component {
             id="contact-form"
             method="POST"
             name="contact"
-            onSubmit={this.handleSubmit.bind(this)}
+            onSubmit={this.handleSubmit}
           >
             <input
               type="hidden"
