@@ -14,7 +14,7 @@ const SingleImageAsset = ({ imageArray, imageId }) => {
   );
   if (matchedImage[0].fields.file.contentType === 'video/mp4') {
     return (
-      <video width="980" height="551.25" controls>
+      <video width="980" height="551.25" autoPlay playsInline loop muted>
         <source src={matchedImage[0].fields.file.url} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

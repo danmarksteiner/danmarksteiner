@@ -1,17 +1,25 @@
 iframe {
   border: none;
+  overflow: hidden;
 }
 .project-page-banners {
   margin: auto;
-  padding: 0px 0 60px;
-  max-width: 970px;
-  display: grid;
-  grid-template-areas:
-    'a a a'
-    'b c d'
-    'e e e';
-  align-content: space-between;
-  row-gap: 20px;
+  padding: 0 18px;
+  @media (min-width: 970px) {
+    max-width: 970px;
+    display: grid;
+    grid-template-areas:
+      'a a a'
+      'b c d'
+      'e e e';
+    align-content: space-between;
+    row-gap: 20px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 .project-banner-leaderboard {
   grid-area: a;
