@@ -1,3 +1,5 @@
+# danmarksteiner.com portfolio
+
 ## Running the website build
 
 To run this project use the cmd
@@ -18,4 +20,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ## Contentful
 
-This websites content is stored and edited on the platform contentful. To learn more please visit [https://www.contentful.com/].
+This websites content is stored and edited on the platform contentful. To learn more please visit [https://www.contentful.com].
+
+## Netlify
+
+This build is deployed and hosted on the Netlify platform. To learn more please visit [https://www.netlify.com].
